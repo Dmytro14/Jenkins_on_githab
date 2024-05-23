@@ -28,3 +28,7 @@ scrape_configs:
     metrics_path: '/prometheus'
     static_configs:
       - targets: ['fictional-space-spoon-vrjj9pr5rwxh75p-8080.app.github.dev']
+
+  - job_name: 'deep-face'
+    static_configs:
+      - targets: ['localhost:5000']
