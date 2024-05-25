@@ -18,7 +18,7 @@ def generate_random_data():
     return data
 
 if __name__ == "__main__":
-    start_http_server(8060)  # Запуск HTTP-сервера на порту 8060
+    start_http_server(8001)  # Запуск HTTP-сервера на порту 8000
 
     try:
         while True:
@@ -31,7 +31,7 @@ if __name__ == "__main__":
             smile_probability_metric.set(random_data['smile_probability'])
 
             print("Дані збережено: ", random_data)
-            time.sleep(50)
+            time.sleep(5)
 
     except KeyboardInterrupt:
         print("Програма завершена.")

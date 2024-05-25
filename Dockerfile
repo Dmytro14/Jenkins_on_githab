@@ -1,4 +1,9 @@
-FROM nginx:latest
-RUN rm -rf /usr/share/nginx/html/index.html
-COPY ./puzatka_house-main/. /usr/share/nginx/html/
-# sample
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY metrics_exporter.py .
+
+RUN pip install prometheus_client
+
+CMD ["python", "metrics_exporter.py"]
