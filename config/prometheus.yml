@@ -52,4 +52,5 @@ scrape_configs:
 
   - job_name: 'python_script_4271'
     static_configs:
-      - targets: ['fictional-space-spoon-vrjj9pr5rwxh75p-8001.app.github.dev']
+      - targets: ['python_script_4271:8001']
+

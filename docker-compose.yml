@@ -85,6 +85,8 @@ services:
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - prometheus-data:/prometheus
     restart: unless-stopped
+    networks:
+      - back-tier
 
   grafana:
     image: docker.io/grafana/grafana-oss:latest
@@ -100,6 +102,8 @@ services:
     depends_on:
       - prometheus
     restart: unless-stopped
+    networks:
+      - back-tier
 
   node-exporter:
     image: quay.io/prometheus/node-exporter:latest
@@ -110,6 +114,8 @@ services:
     restart: unless-stopped
     volumes:
       - /:/host:ro,rslave
+    networks:
+      - back-tier
 
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
@@ -128,6 +134,8 @@ services:
       - /dev/kmsg
     privileged: true
     restart: unless-stopped
+    networks:
+      - back-tier
 
   python_script:
     build:
@@ -136,4 +144,13 @@ services:
     container_name: python_script_4271
     ports:
       - 8001:8001
+    expose:
+      - 8001
     restart: unless-stopped
+    networks:
+      - back-tier
+
+networks:
+  back-tier:
+    
+
